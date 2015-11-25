@@ -33,8 +33,6 @@ public class ItemBusinessLogic {
 	@PersistenceContext
 	private EntityManager entityManager;
 
-	private static Logger LOGGER = Logger.getLogger(ItemBusinessLogic.class.getName());
-
 	public long persistOrder(ItemDAO item) {
 		ItemEntity ie = new ItemEntity();
 		ie.setName(item.getName());
@@ -49,13 +47,14 @@ public class ItemBusinessLogic {
 
 	public ItemDAO getItemDAO(long itemId) {
 		ItemEntity ie = getItem(itemId);
-		ItemDAO dao = new ItemDAO(ie.getName(), ie.getDetails(), ie.isDone());
+		ItemDAO dao = new ItemDAO(ie.getId(), ie.getName(), ie.getDetails(), ie.isDone());
 		return dao;
 	}
 
-	public void setDoneState(long itemId, boolean done) {
+	public void setDone(long itemId, boolean done) {
 		ItemEntity ie = getItem(itemId);
 		ie.setDone(done);
+
 		entityManager.merge(ie);
 	}
 

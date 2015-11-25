@@ -12,11 +12,10 @@
  */
 package org.camunda.bpm.getstarted.pizza.dao;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Version;
+
 
 public class ItemDAO {
+	private long id;
 	private String name;
 	private String details;
 	private boolean done;
@@ -25,7 +24,8 @@ public class ItemDAO {
 		
 	}
 	
-	public ItemDAO(String name, String details,  boolean done) {
+	public ItemDAO(long id, String name, String details,  boolean done) {
+		this.id = id;
 		this.name = name;
 		this.details = details;
 		this.done = done;
@@ -56,5 +56,13 @@ public class ItemDAO {
 	  public void setDetails(String details) {
 	    this.details = details;
 	  }
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
 
 }

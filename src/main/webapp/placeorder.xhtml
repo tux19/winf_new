@@ -30,7 +30,7 @@
 	          <h:inputText id="details" value="#{itemController.itemDAO.details}" required="true" />
 	
 		  </h:panelGrid>
-		  <h:commandButton id="add_button" value="add" action="#{itemController.submitForm()}" onclick="#{itemcontroller }"/>
+		  <h:commandButton id="add_button" value="add" action="#{itemController.submitForm()}"/>
 		  <h:messages style="color:red;margin:8px;" />
 		  </h:form>
 		  <h:dataTable id="table" value="#{itemController.getAllItems()}" var="item">
@@ -44,7 +44,21 @@
 		  	   	<f:facet name="header">
 		          <h:outputText value="Details" />
 		        </f:facet>
-		  	 	<h:outputText value="#{todo.details}"></h:outputText>
+		  	 	<h:outputText value="#{item.details}"></h:outputText>
+		  	 </h:column>
+		  	 <h:column>
+		  	   	<f:facet name="header">
+		          <h:outputText value="Done" />
+		        </f:facet>
+		  	 	<h:outputText value="#{item.done}"></h:outputText>
+		  	 </h:column>
+		  	 <h:column>
+		  	   	<f:facet name="header">
+		          <h:outputText value=" " />
+		        </f:facet>  
+		        <h:form>
+		        	<h:commandLink action="#{itemController.finishTask(item.id)}" value="finish-task" class="btn btn-small"/>
+		        </h:form>
 		  	 </h:column>
   		  </h:dataTable>
 		  <h:form id="updateForm">
