@@ -33,7 +33,7 @@ import org.camunda.bpm.getstarted.pizza.entity.ItemEntity;
 import org.camunda.bpm.getstarted.pizza.logic.ItemBusinessLogic;
 
 @Named
-@SessionScoped
+@ConversationScoped
 public class ItemController implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@EJB

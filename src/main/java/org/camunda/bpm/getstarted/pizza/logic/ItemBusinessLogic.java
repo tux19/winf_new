@@ -69,7 +69,7 @@ public class ItemBusinessLogic {
 //				new String[] {order.getCustomer(), String.valueOf(order.getId()), order.getPizza() });
 //	}
 	public List<ItemEntity> getAllItem(){
-		List<ItemEntity>allItems = entityManager.createQuery("SELECT t FROM ItemEntity t").getResultList();
+		List<ItemEntity>allItems = entityManager.createQuery("SELECT t FROM ItemEntity t WHERE t.done = false").getResultList();
 		return  allItems;
 	}
 	  
